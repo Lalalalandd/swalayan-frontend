@@ -17,25 +17,31 @@
                with font-awesome or any other icon font library -->
           <li class="nav-item">
             <a href="index.php" class="nav-link">
+              <i class="nav-icon fas fa-home"></i>
+              <p>Home</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="employee.php" class="nav-link">
               <i class="nav-icon fas fa-user"></i>
               <p>Employee</p>
             </a>
           </li>
           <li class="nav-item">
             <a href="product.php" class="nav-link">
-              <i class="nav-icon fas fa-shopping-bag"></i>
+              <i class="nav-icon fas fa-warehouse"></i>
               <p>Product</p>
             </a>
           </li>
           <li class="nav-item">
             <a href="incoming_product-add.php" class="nav-link">
-              <i class="nav-icon fas fa-boxes"></i>
+              <i class="nav-icon fas fa-truck"></i>
               <p>Incoming Product</p>
             </a>
           </li>
           <li class="nav-item">
             <a href="transaction-add.php" class="nav-link">
-              <i class="nav-icon fas fa-exchange-alt"></i>
+              <i class="nav-icon fas fa-receipt"></i>
               <p>Transaction</p>
             </a>
           </li>
