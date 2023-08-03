@@ -23,19 +23,19 @@
           </li>
           <li class="nav-item">
             <a href="product.php" class="nav-link">
-              <i class="nav-icon fas fa-file"></i>
+              <i class="nav-icon fas fa-shopping-bag"></i>
               <p>Product</p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="incoming_product.php" class="nav-link">
-              <i class="nav-icon fas fa-file"></i>
+            <a href="incoming_product-add.php" class="nav-link">
+              <i class="nav-icon fas fa-boxes"></i>
               <p>Incoming Product</p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="transaction.php" class="nav-link">
-              <i class="nav-icon fas fa-file"></i>
+            <a href="transaction-add.php" class="nav-link">
+              <i class="nav-icon fas fa-exchange-alt"></i>
               <p>Transaction</p>
             </a>
           </li>
