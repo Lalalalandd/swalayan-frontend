@@ -35,7 +35,7 @@
     <div class="card-body login-card-body ">
       <p class="login-box-msg">Sign in to start your session</p>
 
-      <form action="../index3.html" method="post">
+      <form action="../pages/index.php" method="post">
         <div class="input-group mb-3">
           <input type="email" class="form-control" placeholder="Username">
           <div class="input-group-append">
