@@ -109,27 +109,52 @@
 
             <!-- Isi ne nde kene  -->
               <div class="card" style="justify-content: space-between;">
-                <div class="card-header">
+              <div class="card-header">
                     <div class="form-row" >
-                      <div class="form-group col-md-4">
+
+                      <div class="form-group col-md-3">
                         <h3 class="card-title" style="margin-right: 10px;">All Incoming Product Transaction</h3>
                       </div>
-                      <div class="form-group col-md-2">
-                        <select id="inputDate" class="form-control">
-                          <option value="">Date</option>
-                        </select>
+                      <div class="form-group col-md-8" style="margin-bottom: 0px;">
+                        <form id="searchForm">
+                          <div class="form-group" style="width: 100%;">
+                            <select id="searchOption" class="form-control">
+                              <option value="nip" id="nipOption">Find By NIP</option>
+                              <option value="date" id="dateOption">Find By Date</option>
+                            </select>
+                          </div>
+
+                          <!-- Fields for "Find By NIP" option -->
+                          <div id="nipFields">
+                            <div class="form-group" style="width: 100%;">
+                              <input type="text" id="fnip" name="fnip" placeholder="NIP">
+                            </div>
+                          </div>
+
+                          <!-- Fields for "Find Date" option -->
+                          <div id="dateFields">
+                            <div class="form-group">
+                              <select id="inputYear" class="form-control">
+                                <option value="">Year</option>
+                                <!-- Add years dynamically, e.g., using JavaScript -->
+                              </select>
+                            </div>
+                            <div class="form-group">
+                              <select id="inputMonth" class="form-control">
+                                <option value="">Month</option>
+                                <!-- Add months dynamically, e.g., using JavaScript -->
+                              </select>
+                            </div>
+                            <div class="form-group">
+                              <select id="inputDate" class="form-control">
+                                <option value="">Date</option>
+                                <!-- Add dates dynamically, e.g., using JavaScript -->
+                              </select>
+                            </div>
+                          </div>
+                        </form>
                       </div>
-                      <div class="form-group col-md-2">
-                        <select id="inputMonth" class="form-control">
-                          <option value="">Month</option>
-                        </select>
-                      </div>
-                      <div class="form-group col-md-2">
-                        <select id="inputYear" class="form-control">
-                          <option value="">Year</option>
-                        </select>
-                      </div>
-                      <div class="form-group col-md-2">
+                      <div class="form-group col-md-1">
                         <button id="searchButton" type="submit"
                         class="small-box bg-info" style="margin-bottom: 0px; border: none; height:100%; width: 100%">
                           <i class="fa fa-search"></i>
@@ -158,8 +183,12 @@
                         <td>4</td>
                         <td>2023</td>   
                         <td>18:01:33</td>  
-                        <td><button class="small-box bg-info" 
-                    style="margin-bottom: 0px; border: none; width: 100%;">Details</button></td>      
+                        <td>
+                          <button class="small-box bg-info"
+              style="margin-bottom: 0px; border: none; width: 100%;"
+              data-toggle="modal" data-target="#detailsModal"
+              onclick="showDetails(this)">Details</button>
+                        </td>
                       </tr>
                       <tr>
                         <td>2</td>
@@ -168,8 +197,12 @@
                         <td>4</td>
                         <td>2023</td>   
                         <td>18:01:33</td>  
-                        <td><button class="small-box bg-info" 
-                    style="margin-bottom: 0px; border: none; width: 100%;">Details</button></td>    
+                        <td>
+                          <button class="small-box bg-info"
+              style="margin-bottom: 0px; border: none; width: 100%;"
+              data-toggle="modal" data-target="#detailsModal"
+              onclick="showDetails(this)">Details</button>
+                        </td>
                       </tr>
                       <tr>
                         <td>3</td>
@@ -178,8 +211,12 @@
                         <td>4</td>
                         <td>2023</td>   
                         <td>18:01:33</td>  
-                        <td><button class="small-box bg-info" 
-                    style="margin-bottom: 0px; border: none; width: 100%;">Details</button></td>    
+                        <td>
+                          <button class="small-box bg-info"
+              style="margin-bottom: 0px; border: none; width: 100%;"
+              data-toggle="modal" data-target="#detailsModal"
+              onclick="showDetails(this)">Details</button>
+                        </td>    
                       </tr>
                       <tr>
                         <td>3</td>
@@ -188,8 +225,12 @@
                         <td>4</td>
                         <td>2023</td>   
                         <td>18:01:33</td>  
-                        <td><button class="small-box bg-info" 
-                    style="margin-bottom: 0px; border: none; width: 100%;">Details</button></td>    
+                        <td>
+                          <button class="small-box bg-info"
+              style="margin-bottom: 0px; border: none; width: 100%;"
+              data-toggle="modal" data-target="#detailsModal"
+              onclick="showDetails(this)">Details</button>
+                        </td>
                       </tr>
                     </tbody>
                   </table>
@@ -210,6 +251,80 @@
   <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
+
+<!-- Modal -->
+<div class="modal fade" id="detailsModal" tabindex="-1" role="dialog" aria-labelledby="detailsModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="detailsModalLabel"></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="modalContent">
+        <!-- The content will be populated dynamically here -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Get the searchOption element
+  const searchOption = document.getElementById('searchOption');
+
+  // Get the productFields and dateFields elements
+  const nipFields = document.getElementById('nipFields');
+  const dateFields = document.getElementById('dateFields');
+
+  // Function to toggle the display of fields based on the selected option
+  function toggleFields() {
+    const selectedValue = searchOption.value;
+    if (selectedValue === 'nip') {
+      nipFields.style.display = 'block';
+      dateFields.style.display = 'none';
+    } else if (selectedValue === 'date') {
+      nipFields.style.display = 'none';
+      dateFields.style.display = 'block';
+    }
+  }
+
+  // Add event listener to the searchOption dropdown to trigger toggleFields on change
+  searchOption.addEventListener('change', toggleFields);
+
+  // Call toggleFields initially to set the initial display based on the default selected option
+  toggleFields();
+
+  function showDetails(button) {
+  const row = button.parentNode.parentNode; // Get the parent row of the clicked button
+
+  // Extract data from the row
+  const id = row.cells[0].innerText;
+  const column1 = row.cells[1].innerText;
+  const column2 = row.cells[2].innerText;
+  const column3 = row.cells[3].innerText;
+  const column4 = row.cells[4].innerText;
+  const column5 = row.cells[5].innerText;
+
+  // Create the content to be shown in the modal
+  const detailsModalLabel = `
+    Transaction ID: ${id}
+  `;
+  const modalContent = `
+    <div style="margin-bottom:0px">
+      NIP: ${column1}<br>
+      Date: ${column2} - ${column3} - ${column4}<br>
+      Time: ${column5}<br>
+      Product Details:
+    </div>
+    
+  `;
+
+  // Update the modal content with the generated content
+  document.getElementById("modalContent").innerHTML = modalContent;
+  document.getElementById("detailsModalLabel").innerHTML = detailsModalLabel;
+}
+</script>
 
 <?php 
   include '../template/footer.php';

@@ -111,11 +111,11 @@
               <div class="card">
                 <div class="card-header">
                   <div class="form-row" >
-                    <div class="form-group col-md-9">
+                    <div class="form-group col-md-8">
                       <h3 class="card-title" style="margin-right: 10px;">Add Transaction</h3>
                     </div>
-                    <div class="form-group col-md-3">
-                      <input type="text" id="fproduct" name="fproduct" style="width: 100%;" placeholder="Product Name">
+                    <div class="form-group col-md-4">
+                      <input type="text" id="fproduct" name="fproduct" style="width: 100%; height: 100%;" placeholder="Product Name">
                     </div>
                   </div>
                 </div>

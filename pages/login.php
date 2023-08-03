@@ -52,29 +52,11 @@
             </div>
           </div>
         </div>
-        <div class="row">
-          <div class="col-8">
-            <div class="icheck-primary">
-              <input type="checkbox" id="remember">
-              <label for="remember">
-                Remember Me
-              </label>
-            </div>
-          </div>
-          <!-- /.col -->
-          <div class="col-4">
-            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
-          </div>
-          <!-- /.col -->
+        <div class="row" style="width: 40%; margin: 0 auto;">
+          <button type="submit" class="btn btn-primary btn-block">Sign In</button>
         </div>
-      </form>
 
-      <div class="social-auth-links text-center mb-3">
-        <p>- OR -</p>
-        <a href="register.php" class="btn btn-block btn-info">
-          <i class="fas fa-sign-in-alt mr-2"></i> Sign Up 
-        </a>
-      </div>
+      </form>
       <!-- /.social-auth-links -->
     </div>
     <!-- /.login-card-body -->
