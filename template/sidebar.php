@@ -6,7 +6,7 @@
           <img src="../dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Anggap Saja Admin</a>
+          <a href="#" class="d-block"><?= $_SESSION['username']?></a>
         </div>
       </div>
 
@@ -21,12 +21,14 @@
               <p>Home</p>
             </a>
           </li>
+          <?php if($_SESSION["role"] == "ROLE_ADMIN") { ?>
           <li class="nav-item">
             <a href="employee.php" class="nav-link">
               <i class="nav-icon fas fa-user"></i>
               <p>Employee</p>
             </a>
           </li>
+          <?php } ?>
           <li class="nav-item">
             <a href="product.php" class="nav-link">
               <i class="nav-icon fas fa-warehouse"></i>
@@ -43,6 +45,12 @@
             <a href="transaction-add.php" class="nav-link">
               <i class="nav-icon fas fa-receipt"></i>
               <p>Transaction</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="requestApi/logout.php" class="nav-link">
+              <i class="nav-icon fas fa-receipt"></i>
+              <p>Log Out</p>
             </a>
           </li>
           

@@ -68,117 +68,86 @@
         <!-- /.row -->
         <!-- Main row -->
         <div class="content" style="min-height: 1000px;">
-          <!-- Left col -->
-          <!-- <section class="content"> -->
+        <div class="container-fluid">
+          <div class="row">
+
+            <div class="col-md-12">
+
+              <div class="card card-primary">
+                <div class="card-header">
+                  <h3 class="card-title">Tambah Data Product</h3>
+                </div>
+                <?php
+                require '../vendor/autoload.php';
+
+                use GuzzleHttp\Client;
+
+                $baseUri = 'http://localhost:8091/'; // Ganti dengan base URL API Anda
+                $endpoint = '/api/product'; // Ganti dengan endpoint untuk menambahkan data employee
+
+                if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                  $newProductData = [
+                    'name' => $_POST['name'],
+                    'price' => $_POST['price'],
+                    'stock' => $_POST['stock'],
+                    'product_desc' => $_POST['product_desc'],
+                  ];
+
+                  $client = new Client(['base_uri' => $baseUri]);
+
+                  try {
+                    $response = $client->post($endpoint, [
+                      'headers' => [
+                        'Authorization' => 'Bearer '.$_SESSION['accessToken'], // Ganti dengan token akses Anda
+                        'Content-Type' => 'application/json',
+                      ],
+                      'json' => $newProductData,
+                    ]);
+
+                    $statusCode = $response->getStatusCode();
+                    $responseData = json_decode($response->getBody(), true);
+
+                    // Proses response jika perlu
+                    if ($statusCode === 200) {
+
+                      // Tambahan aksi jika perlu
+                    } else {
+                      echo 'Failed to add employee: ' . $responseData['message'];
+                    }
+                  } catch (\GuzzleHttp\Exception\RequestException $e) {
+                    echo 'Error: ' . $e->getMessage();
+                  }
+                }
+                ?>
 
 
 
             <!-- Isi ne nde kene  -->
-              <div class="card">
-                <div class="card-header">
-                  <div class="form-row" >
-                    <div class="form-group col-md-9">
-                      <h3 class="card-title" style="margin-right: 10px;">Add Product</h3>
-                    </div>
-                    <div class="form-group col-md-3">
-                      <input type="text" id="fproduct" name="fproduct" style="width: 100%;" placeholder="Product Name">
-                    </div>
-                  </div>
-                </div>
-                <div class="card-body p-0">
-                  <table class="table table-striped table-bordered" >
-                    <thead>
-                      <tr>
-                        <th></th> <!-- Add an empty header cell for the checkbox -->
-                        <th>ID</th>
-                        <th>Product Name</th>
-                        <th>price</th>
-                        <th>Product Description</th>
-                        <th>Stock</th>   
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td><input type="checkbox" name="productCheckbox" /></td> <!-- Add a checkbox for each row -->
-                        <td>1</td>
-                        <td>Biore</td>
-                        <td>10000</td>
-                        <td>This is a description of product 1.</td>
-                        <td>100</td>                 
-                      </tr>
-                      <tr>
-                        <td><input type="checkbox" name="productCheckbox" /></td>
-                        <td>2</td>
-                        <td>sunsilk</td>
-                        <td>10000</td>
-                        <td>This is a description of product 2.</td>
-                        <td>70</td>
-                      </tr>
-                      <tr>
-                        <td><input type="checkbox" name="productCheckbox" /></td>
-                        <td>3</td>
-                        <td>head&Shoulder</td>
-                        <td>10000</td>
-                        <td>This is a description of product 3.</td>
-                        <td>50</td>
-                      </tr>
-                    </tbody>
-                  </table>
-
-                  <div class="fixed-block">
-
-                    <!-- Number of checked items -->
-                    <span id="checkedItems">0 items checked</span>
-
-                    <!-- Add button -->
-                    <button class="small-box bg-info" style="margin-bottom: 0px; width: 8%; border: none;"
-                    data-toggle="modal" data-target="#AddModel">Add</button>
-                  </div>
-              </div>
-
-               <!-- Confirmation Modal -->
-            <!-- Confirmation Modal -->
-            <div class="modal fade" id="AddModel" tabindex="-1" role="dialog" aria-labelledby="confirmationModalLabel"
-                aria-hidden="true">
-              <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="confirmationModalLabel">Tambah Product</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="modal-body">
-                    <form role="form">
+            <form action="" method="post">
+                  <div class="card-body">
                     <div class="form-group">
-                        <label for="Id">Id</label>
-                        <input type="number" class="form-control" id="Id" placeholder="Masukkan Id product">
-                      </div>
-                      <div class="form-group">
-                        <label for="product_name">Product name</label>
-                        <input type="text" class="form-control" id="product_name" placeholder="Masukkan Nama product">
-                      </div>
-                      <div class="form-group">
-                        <label for="Price">Price</label>
-                        <input type="text" class="form-control" id="Price" placeholder="Masukkan Price Product">
-                      </div>
-                      <div class="form-group">
-                        <label for="stock">Stock</label>
-                        <input type="number" class="form-control" id="stock" placeholder="Masukkan Stok Barang">
-                      </div>
-                      <div class="form-group">
-                        <label for="product_description">Product name</label>
-                        <input type="text" class="form-control" id="product_description" placeholder="Masukkan description product">
-                      </div>
-                    </form>
+                      <label for="name">Product name</label>
+                      <input type="text" class="form-control" id="name" name="name" placeholder="Masukkan Nama Produk ">
+                    </div>
+                    <div class="form-group">
+                      <label for="price">price</label>
+                      <input type="text" class="form-control" id="price" name="price" placeholder="Masukkan price">
+                    </div>
+                    <div class="form-group">
+                      <label for="stock">stock</label>
+                      <input type="text" class="form-control" id="stock" name="stock" placeholder="Masukkan stock">
+                    </div>
+                    <div class="form-group">
+                      <label for="product_desc">product_desc</label>
+                      <input type="text" class="form-control" id="product_desc" name="product_desc" placeholder="Masukkan product_desc">
+                    </div>
+                    
                   </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-primary" onclick="addBarang()">Add</button>
+                  <div class="card-footer">
+                    <button type="submit" class="btn btn-primary float-right">Tambah Data</button>
                   </div>
-                </div>
               </div>
-            </div>
+              </form>
 
           <!-- </section> -->
           <!-- right col -->

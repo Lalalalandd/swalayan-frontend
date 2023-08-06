@@ -1,164 +1,182 @@
 <?php
-    include "../template/header.php";
+include "../template/header.php";
 ?>
+
 <body class="hold-transition sidebar-mini layout-fixed">
-<div class="wrapper">
-  <!-- Navbar -->
-  <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-    <!-- Left navbar links -->
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
-      </li>
-    </ul>
-    
-  </nav>
-  <!-- /.navbar -->
+  <div class="wrapper">
+    <!-- Navbar -->
+    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+      <!-- Left navbar links -->
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+        </li>
+      </ul>
 
-  <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-dark-primary elevation-4">
-    <!-- Brand Logo -->
-    <a href="index.php" class="brand-link">
-      <img src="../dist/img/AdminLTELogo.png" alt="Swalayan Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">Swalayan</span>
-    </a>
+    </nav>
+    <!-- /.navbar -->
 
-    <?php
-    include "../template/sidebar.php";
-    ?>
-  </aside>
+    <!-- Main Sidebar Container -->
+    <aside class="main-sidebar sidebar-dark-primary elevation-4">
+      <!-- Brand Logo -->
+      <a href="index.php" class="brand-link">
+        <img src="../dist/img/AdminLTELogo.png" alt="Swalayan Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+        <span class="brand-text font-weight-light">Swalayan</span>
+      </a>
 
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <div class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1 class="m-0">Employee</h1>
-          </div><!-- /.col -->
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item"><a href="../pages/employee.php">Employee</a></li>
-              <li class="breadcrumb-item active"><a href="#">AllEmployee</a></li>
-            </ol>
-          </div><!-- /.col -->
-        </div><!-- /.row -->
-      </div><!-- /.container-fluid -->
-    </div>
-    <!-- /.content-header -->
+      <?php
+      include "../template/sidebar.php";
+      ?>
+    </aside>
 
-    <!-- Main content -->
-        <!-- Small boxes (Stat box) -->
-        
-          <!-- ./col -->
-        
-            <!-- small box -->
-        
-          <!-- ./col -->
-        
-            <!-- small box -->
-        
-          <!-- ./col -->
-        
-            <!-- small box -->
-        
-          <!-- ./col -->
-        
-        <!-- /.row -->
-        <!-- Main row -->
-        
-          <!-- Left col -->
-          <!-- <section class="content"> -->
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+      <!-- Content Header (Page header) -->
+      <div class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h1 class="m-0">Employee</h1>
+            </div><!-- /.col -->
+            <div class="col-sm-6">
+              <ol class="breadcrumb float-sm-right">
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item"><a href="../pages/employee.php">Employee</a></li>
+                <li class="breadcrumb-item active"><a href="#">AllEmployee</a></li>
+              </ol>
+            </div><!-- /.col -->
+          </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+      </div>
 
-
-
-            <!-- Isi ne nde kene  -->
-            <div class="card">
+      <section class="content">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="card">
                 <div class="card-header">
-                  <div class="form-row" >
+                  <div class="form-row">
                     <div class="form-group col-md-3">
                       <h3 class="card-title" style="margin-right: 10px;">All Employee</h3>
                     </div>
                     <div class="form-group col-md-3">
-                        <label for="inputnip">Nip</label>
-                        <input type="number" class="form-control" id="inputnip" placeholder="Select ID">
-                      </div>
-                      </div>
-                      <div class="form-group col-md-3">
-                        <button id="searchButton" type="submit"
-                        class="small-box bg-info" style="margin-bottom: 0px; border: none; height:100%; width: 100%">
-                          <i class="fa fa-search"></i>
-                        </button>
-                      </div>
+                      <label for="inputnip">Nip</label>
+                      <input type="number" class="form-control" id="inputnip" placeholder="Select ID">
+                    </div>
+                  </div>
+                  <div class="form-group col-md-3">
+                    <button id="searchButton" type="submit" class="small-box bg-info" style="margin-bottom: 0px; border: none; height:100%; width: 100%">
+                      <i class="fa fa-search"></i>
+                    </button>
                   </div>
                 </div>
-                <div class="card-body p-0">
-                  <table class="table table-striped table-bordered" >
-                    <thead>
-                      <tr>
-                        <th>NIP</th>
-                        <th>Name</th>
-                        <th>Username</th>
-                        <th>Password</th>
-                        <th>address</th>
-                        <th>phone number</th>
-                        <th>department name</th>
-                        <th>Position</th>   
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>1</td>
-                        <td>john</td>
-                        <td>sins</td>
-                        <td>This</td>
-                        <td>nutz street</td>
-                        <td>0875501</td>
-                        <td>marketing</td>
-                        <td>vice manager</td>                 
-                      </tr>
-                      <tr>
-                      <td>2</td>
-                        <td>john</td>
-                        <td>lord</td>
-                        <td>This</td>
-                        <td>butt street</td>
-                        <td>0875501</td>
-                        <td>marketing</td>
-                        <td>Manajer</td>
-                      </tr>
-                      <tr>
-                       <td>3</td> 
-                      <td>lord</td>
-                        <td>gollum</td>
-                        <td>this</td>
-                        <td>MidlleEarth street</td>
-                        <td>0875501</td>
-                        <td>President</td>
-                        <td>CEO</td>
-                      </tr>
-                    </tbody>
-                  </table>
-          <!-- </section> -->
-          <!-- right col -->
+              </div>
+              <div class="card-body p-0">
+                <table class="table table-striped table-bordered">
+                  <thead>
+                    <tr>
+                      <th>NIP</th>
+                      <th>Name</th>
+                      <th>Username</th>
+                      <th>address</th>
+                      <th>phone number</th>
+                      <th>department name</th>
+                      <th>Position</th>
+                      <th colspan="3">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <?php
+                    include 'requestApi/getEmployee.php';
+                    ?>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
         </div>
-        <!-- /.row (main row) -->
-      </div><!-- /.container-fluid -->
+    </div>
     </section>
-    <!-- /.content -->
   </div>
 
-  <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark">
-    <!-- Control sidebar content goes here -->
-  </aside>
-  <!-- /.control-sidebar -->
-</div>
-<!-- ./wrapper -->
-<?php 
+  <!-- Modal Detail Employee Roles -->
+  <div class="modal fade" id="detailsModal" tabindex="-1" role="dialog" aria-labelledby="detailsModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="detailsModalLabel"></h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" id="modalContent">
+          <!-- The content will be populated dynamically here -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    function confirm_alert(node) {
+      return confirm("Anda yakin mau hapus data ini?");
+    }
+
+    function showDetails(button) {
+        let text = button.getAttribute("data").replaceAll("'", "\"")
+        console.log(text)
+        let detail = JSON.parse(text)
+        const row = button.parentNode.parentNode; // Get the parent row of the clicked button
+
+        // Extract data from the row
+        const id = row.cells[0].innerText;
+        const column1 = row.cells[1].innerText;
+        const column2 = row.cells[2].innerText;
+        const column3 = row.cells[3].innerText;
+        const column4 = row.cells[4].innerText;
+        const column5 = row.cells[5].innerText;
+        button.getAttribute("data")
+        // Create the content to be shown in the modal
+        const detailsModalLabel = `
+      Detail Employee ID = ${id}
+    `;
+        let detailProduct = ''
+        for (let i = 0; i < detail.length; i++) {
+          detailProduct += `
+      <tr>
+      
+        <td>${detail[i].id}</td>
+        <td>${detail[i].nama_role}</td>
+      </tr>
+      `
+        }
+        const modalContent = `
+        <div style="margin-bottom:0px">
+        Name : ${column1}<br>
+        Username : ${column2} <br>
+        Address :${column3} <br> 
+        Number Phone :${column4}<br>
+        Position: ${column5}<br>
+        Product Details:
+        <table class="table table-striped table-bordered" style="text-align: center;">
+          <tr>
+            <th>ID Role</th>
+            <th>Nama Role</th>
+          </tr>
+        ${detailProduct}
+        </table>
+      </div>
+    `;
+        // Update the modal content with the generated content
+        document.getElementById("modalContent").innerHTML = modalContent;
+        document.getElementById("detailsModalLabel").innerHTML = detailsModalLabel;
+      }
+  </script>
+  </script>
+
+  </div>
+  <?php
   include '../template/footer.php';
-?>
+  ?>
 </body>
+
 </html>

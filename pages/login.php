@@ -28,16 +28,16 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href="../index2.html"><b>Swalayan</b>Barokah</a>
+    <a href="../index.html"><b>Swalayan</b>Barokah</a>
   </div>
   <!-- /.login-logo -->
   <div class="card">
     <div class="card-body login-card-body ">
       <p class="login-box-msg">Sign in to start your session</p>
 
-      <form action="../pages/index.php" method="post">
+      <form action="" method="post">
         <div class="input-group mb-3">
-          <input type="email" class="form-control" placeholder="Username">
+          <input type="text" class="form-control" id="username" name="username" placeholder="Username">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-envelope"></span>
@@ -45,7 +45,7 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="password" class="form-control" placeholder="Password">
+          <input type="text" class="form-control" id="password" name="password" placeholder="Password">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
@@ -70,5 +70,63 @@
 <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
 <script src="../../dist/js/adminlte.min.js"></script>
+<?php
+    // Menggunakan autoloader dari Composer
+    require '../vendor/autoload.php';
+
+    use GuzzleHttp\Client;
+    use GuzzleHttp\Exception\RequestException;
+
+    // URL dari API Spring Boot
+    $api_url = 'http://localhost:8090/auth/login';
+    // $client = new Client();
+
+    // $response = $client->get($api_url);
+    // echo($response->getBody());
+
+    // Data login dari form submission
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        
+        $username = $_POST['username'];
+        $password = $_POST['password'];
+
+        try {
+            // Lakukan HTTP POST request ke API dengan data login
+            $client = new Client();
+            $response=$client->request('POST', $api_url, [
+              'json' =>[
+              "username" => $username,
+              "password" => $password
+              ]
+            ]);
+
+            // Cek status code respons
+            if ($response->getStatusCode() === 200) {
+                // Ambil data JSON dari respons
+                $data = json_decode($response->getBody(), true);
+                // Periksa apakah login berhasil
+                if (isset($data['accessToken']) ) {
+                    session_start();
+                    $_SESSION['accessToken'] = $data['accessToken'];
+                    $_SESSION['username'] = $data['username'];
+                    $_SESSION['role'] = $data['role'];
+                    $_SESSION['nip'] = $data['nip'];
+                    
+                    // echo $_SESSION['accessToken'];
+                    header('Location:employee-all.php');
+                } else {
+                    // Jika gagal, tampilkan alert message
+                    echo '<script>alert("Login gagal. Pesan: ' . $data['message'] . '");</script>';
+                }
+            } else {
+                // Tampilkan alert message jika error pada request
+                echo '<script>alert("Error: ' . $response->getStatusCode() . ' ' . $response->getReasonPhrase() . '");</script>';
+            }
+        } catch (GuzzleHttp\Exception\RequestException $e) {
+            // Tampilkan alert message jika error pada request
+            echo '<script>alert("Error saat mengakses API: ' . $e->getMessage() . '");</script>';
+        }
+    }
+    ?>
 </body>
 </html>

@@ -98,7 +98,7 @@
               <div class="icon">
                 <i class="ion ion-pie-graph"></i>
               </div>
-              <a href="../pages/Employee-manage.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="../pages/employee-edit.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->

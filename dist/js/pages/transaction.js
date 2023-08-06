@@ -115,10 +115,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // Function to handle the 'Add' action
 function addItem() {
-  // Code to add the selected items
-  alert("Items added successfully!"); // Replace this with your actual 'Add' action
-  // Optionally, you can close the modal after the 'Add' action is performed
-  $('#confirmationModal').modal('hide');
+  $("#formAddItem").submit()
 }
 
 function deleteItem() {

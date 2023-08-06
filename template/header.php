@@ -27,5 +27,18 @@
   <link rel="stylesheet" href="../plugins/summernote/summernote-bs4.min.css">
 
   <link rel="stylesheet" href="../dist/css/transaction.css">
-
+  <?php 
+  session_start();
+  
+  // Periksa apakah pengguna telah login dengan memeriksa apakah token ada dalam session
+  if (!isset($_SESSION['accessToken'])) {
+      // Jika tidak ada token, redirect ke halaman login
+      header("Location: login.php");
+      exit();
+  }
+  
+  // Ambil token JWT dari session
+  $jwtToken = $_SESSION['accessToken'];
+  
+  ?>
 </head>
