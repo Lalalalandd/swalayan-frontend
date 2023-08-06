@@ -84,7 +84,7 @@ include "../template/header.php";
                   try {
                     $response = $client->post($endpoint, [
                       'headers' => [
-                        'Authorization' => $_SESSION['accessToken'], // Ganti dengan token akses Anda
+                        'Authorization' => 'Bearer ' . $_SESSION['accessToken'], // Ganti dengan token akses Anda
                         'Content-Type' => 'application/json',
                       ],
                       'json' => $newEmployeeData,
@@ -96,7 +96,9 @@ include "../template/header.php";
                     // Proses response jika perlu
                     if ($statusCode === 200) {
 
-                      // Tambahan aksi jika perlu
+                      echo '<script>
+                        window.location.href = "employee-all.php";
+                        </script>';
                     } else {
                       echo 'Failed to add employee: ' . $responseData['message'];
                     }

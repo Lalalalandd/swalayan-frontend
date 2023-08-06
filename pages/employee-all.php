@@ -56,18 +56,17 @@ include "../template/header.php";
               <div class="card">
                 <div class="card-header">
                   <div class="form-row">
-                    <div class="form-group col-md-3">
-                      <h3 class="card-title" style="margin-right: 10px;">All Employee</h3>
-                    </div>
-                    <div class="form-group col-md-3">
-                      <label for="inputnip">Nip</label>
+                    <div class="form-group col-md-6">
                       <input type="number" class="form-control" id="inputnip" placeholder="Select ID">
                     </div>
-                  </div>
-                  <div class="form-group col-md-3">
-                    <button id="searchButton" type="submit" class="small-box bg-info" style="margin-bottom: 0px; border: none; height:100%; width: 100%">
-                      <i class="fa fa-search"></i>
-                    </button>
+                    <div class="form-group col-md-1">
+                      <button id="searchButton" type="submit" class="btn btn-info">
+                        <i class="fa fa-search"></i>
+                      </button>
+                    </div>
+                    <div class="form-group col-md-5">
+                      <a href="employee-add.php" class="btn btn-primary float-right">Add Data Employee</a>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -122,34 +121,34 @@ include "../template/header.php";
     }
 
     function showDetails(button) {
-        let text = button.getAttribute("data").replaceAll("'", "\"")
-        console.log(text)
-        let detail = JSON.parse(text)
-        const row = button.parentNode.parentNode; // Get the parent row of the clicked button
+      let text = button.getAttribute("data").replaceAll("'", "\"")
+      console.log(text)
+      let detail = JSON.parse(text)
+      const row = button.parentNode.parentNode; // Get the parent row of the clicked button
 
-        // Extract data from the row
-        const id = row.cells[0].innerText;
-        const column1 = row.cells[1].innerText;
-        const column2 = row.cells[2].innerText;
-        const column3 = row.cells[3].innerText;
-        const column4 = row.cells[4].innerText;
-        const column5 = row.cells[5].innerText;
-        button.getAttribute("data")
-        // Create the content to be shown in the modal
-        const detailsModalLabel = `
+      // Extract data from the row
+      const id = row.cells[0].innerText;
+      const column1 = row.cells[1].innerText;
+      const column2 = row.cells[2].innerText;
+      const column3 = row.cells[3].innerText;
+      const column4 = row.cells[4].innerText;
+      const column5 = row.cells[5].innerText;
+      button.getAttribute("data")
+      // Create the content to be shown in the modal
+      const detailsModalLabel = `
       Detail Employee ID = ${id}
     `;
-        let detailProduct = ''
-        for (let i = 0; i < detail.length; i++) {
-          detailProduct += `
+      let detailProduct = ''
+      for (let i = 0; i < detail.length; i++) {
+        detailProduct += `
       <tr>
       
         <td>${detail[i].id}</td>
         <td>${detail[i].nama_role}</td>
       </tr>
       `
-        }
-        const modalContent = `
+      }
+      const modalContent = `
         <div style="margin-bottom:0px">
         Name : ${column1}<br>
         Username : ${column2} <br>
@@ -166,10 +165,10 @@ include "../template/header.php";
         </table>
       </div>
     `;
-        // Update the modal content with the generated content
-        document.getElementById("modalContent").innerHTML = modalContent;
-        document.getElementById("detailsModalLabel").innerHTML = detailsModalLabel;
-      }
+      // Update the modal content with the generated content
+      document.getElementById("modalContent").innerHTML = modalContent;
+      document.getElementById("detailsModalLabel").innerHTML = detailsModalLabel;
+    }
   </script>
   </script>
 

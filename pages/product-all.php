@@ -58,23 +58,14 @@ include "../template/header.php";
               <div class="card">
                 <div class="card-header">
                   <div class="form-row">
-                    <div class="form-group col-md-3">
+                    <div class="form-group col-md-8">
                       <h3 class="card-title" style="margin-right: 10px;">All Product</h3>
                     </div>
-                    <form action="" method="get">
-                      <div class="form-group col-md-3">
-                        <label for="inputId">Id</label>
-                        <input type="number" class="form-control" id="id" name="id" placeholder="Select ID">
-                      </div>
-
-
-                      <div class="form-group col-md-3">
-                        <button id="searchButton" type="submit" class="small-box bg-info" style="margin-bottom: 0px; border: none; height:100%; width: 100%">
-                          <i class="fa fa-search"></i>
-                        </button>
-                      </div>
-                    </form>
-
+                    <div class="form-group col-md-4">
+                      <form action="" method="get">
+                        <input type="search" id="id" name="id" style="width: 100%; height: 100%;" placeholder="Id Product">
+                      </form>
+                    </div>
                   </div>
                 </div>
 

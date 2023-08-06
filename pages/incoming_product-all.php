@@ -202,7 +202,7 @@ include "../template/header.php";
                       <div id="nipFields">
                         <div class="form-group" style="width: 100%;">
                           <form action="" method="get">
-                            <input type="search" id="fnip" name="fnip" style="width: 100%;" value="<?= isset($_GET["fnip"]) ? $_GET["fnip"] : "" ?>" placeholder="NIP">
+                          <input type="search" id="fnip" name="fnip" style="width: 100%;" placeholder="NIP">
                           </form>
                         </div>
                       </div>

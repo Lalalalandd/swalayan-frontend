@@ -113,7 +113,7 @@
                     $_SESSION['nip'] = $data['nip'];
                     
                     // echo $_SESSION['accessToken'];
-                    header('Location:employee-all.php');
+                    header('Location:employee.php');
                 } else {
                     // Jika gagal, tampilkan alert message
                     echo '<script>alert("Login gagal. Pesan: ' . $data['message'] . '");</script>';

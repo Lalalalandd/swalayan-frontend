@@ -4,18 +4,23 @@ require '../vendor/autoload.php';
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
 
-            
-$productEndpoint = "http://localhost:8091/api/product"; 
-$client = new \GuzzleHttp\Client();
+$baseUri = 'http://localhost:8091';
+// $productEndpoint = "http://localhost:8091/api/product"; 
+if (isset($_GET["fproduct"])) {
+    $endpoint = '/api/product/' . $_GET["fproduct"];
+  } else{
+    $endpoint = '/api/product';
+  }
+
+  $client = new Client(['base_uri' => $baseUri]);
 
 try {
-    // Lakukan permintaan dengan Guzzle
-    $response = $client->request('GET', $productEndpoint, [
-        'headers' => [
-            'Authorization' => 'Bearer ' . $_SESSION['accessToken'],
-            'Content-Type' => 'application/json', 
-        ]
-        ]);
+   $response = $client->get($endpoint, [
+                'headers' => [
+                  'Authorization' => 'Bearer ' . $_SESSION['accessToken'], // Ganti dengan token akses Anda
+                  'Content-Type' => 'application/json',
+                ],
+              ]);
   
     $data = json_decode($response->getBody(), true);
 
@@ -41,7 +46,7 @@ try {
 function searchProductById($productId)
 {
     $baseUri = 'http://localhost:8091'; // Ganti dengan base URL API yang sesuai
-    $endpoint = '/product/' . $productId; // Ganti dengan endpoint sesuai dengan API yang Anda gunakan
+    $endpoint = 'api/product/' . $productId; // Ganti dengan endpoint sesuai dengan API yang Anda gunakan
 
     $client = new Client(['base_uri' => $baseUri]);
 
@@ -77,7 +82,7 @@ function searchProductById($productId)
 
 // Contoh pemanggilan fungsi untuk mencari produk berdasarkan ID
 if (isset($_GET['id'])) {
-    $productId = $_GET['id'];
+    $productId = intval($_GET['id']);
     $productName = searchProductById($productId);
 }
 
